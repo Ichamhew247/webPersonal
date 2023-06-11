@@ -42,6 +42,7 @@ import LoginPage from "../pages/LoginPage";
 import Allproduct from "../pages/Allproduct";
 import Contact from "../pages/Contactpage";
 import CreatProductpage from "../pages/CreatProductpage";
+import EditProductpage from "../pages/EditProductpage";
 
 export default function Router() {
   const router = createBrowserRouter([
@@ -59,6 +60,7 @@ export default function Router() {
         { path: "/login", element: <LoginPage /> },
         { path: "/allproduct", element: <Allproduct /> },
         { path: "/creatproductpage", element: <CreatProductpage /> },
+        { path: "/editproductpage/:id", element: <EditProductpage /> },
 
         { path: "/contact", element: <Contact /> },
         { path: "/logout", element: <div className="text-xl">Logout</div> },

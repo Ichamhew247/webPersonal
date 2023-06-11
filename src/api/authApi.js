@@ -28,3 +28,13 @@ export const createProduct = (input) => {
 export const getProduct = () => {
   return authApi.get("/products/");
 };
+export const getProductById = (id) => {
+  return authApi.get(`/products/${id}`);
+};
+
+export const updateProduct = (id, input) => {
+  return authApi.patch(`/products/${id}`, input);
+};
+// export const deleteProductById = (productId) => {
+//   return authApi.delete(`/products/${id}`);
+// };
