@@ -40,12 +40,8 @@ import Homepage from "../pages/Homepage";
 import Register from "../pages/Register";
 import LoginPage from "../pages/LoginPage";
 import Allproduct from "../pages/Allproduct";
-import Contact from "../pages/Contact";
-import Rubber1 from "../pages/rubber1";
-import Rubber2 from "../pages/rubber2";
-import Rubber3 from "../pages/rubber3";
-import Rubber4 from "../pages/rubber4";
-import Rubber5 from "../pages/rubber5";
+import Contact from "../pages/Contactpage";
+import CreatProductpage from "../pages/CreatProductpage";
 
 export default function Router() {
   const router = createBrowserRouter([
@@ -62,11 +58,8 @@ export default function Router() {
         { path: "/register", element: <Register /> },
         { path: "/login", element: <LoginPage /> },
         { path: "/allproduct", element: <Allproduct /> },
-        { path: "/rubber1", element: <Rubber1 /> },
-        { path: "/rubber2", element: <Rubber2 /> },
-        { path: "/rubber3", element: <Rubber3 /> },
-        { path: "/rubber4", element: <Rubber4 /> },
-        { path: "/rubber5", element: <Rubber5 /> },
+        { path: "/creatproductpage", element: <CreatProductpage /> },
+
         { path: "/contact", element: <Contact /> },
         { path: "/logout", element: <div className="text-xl">Logout</div> },
         {

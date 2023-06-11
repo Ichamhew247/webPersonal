@@ -21,3 +21,10 @@ export const login = (input) => {
 export const getMe = (token) => {
   return authApi.get("/users/getMe", addToken(token));
 };
+
+export const createProduct = (input) => {
+  return authApi.post("/products/", input);
+};
+export const getProduct = () => {
+  return authApi.get("/products/");
+};
