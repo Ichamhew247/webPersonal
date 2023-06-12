@@ -17,7 +17,7 @@ export default function Register() {
 
   const hdlSubmit = (e) => {
     const { username, firstName, lastName, password, confirmPassword } = input;
-    e.preventDefault();
+    // e.preventDefault();
 
     // Validation
     if (password != confirmPassword)
@@ -36,14 +36,12 @@ export default function Register() {
   };
   return (
     <>
-      <main className="p-6 m-auto max-w-[70%] ">
+      <div className="p-6 m-auto max-w-[70%] ">
         <h1 className="text-green-600 text-6xl">Create New Account</h1>
 
-        <form
-          className="bg-zinc-400 gap-6 flex flex-col p-6"
-          onClick={hdlSubmit}
-        >
+        <form className="bg-zinc-400 gap-6 flex flex-col p-6">
           <h1 className="text-4xl">User</h1>
+
           <div>
             <input
               type="text"
@@ -54,6 +52,7 @@ export default function Register() {
               value={input.username}
             />
           </div>
+
           <h1 className="text-4xl">FirstName</h1>
           <div>
             <input
@@ -65,6 +64,7 @@ export default function Register() {
               value={input.firstName}
             />
           </div>
+
           <h1 className="text-4xl">LastName</h1>
           <div>
             <input
@@ -76,6 +76,7 @@ export default function Register() {
               value={input.lastName}
             />
           </div>
+
           <h1 className="text-4xl">Password</h1>
           <div>
             <input
@@ -87,11 +88,10 @@ export default function Register() {
               value={input.password}
             />
           </div>
-          <div>
-            <div>
-              <h1 className="text-4xl">Confirm Password</h1>
-            </div>
 
+          <h1 className="text-4xl">Confirm Password</h1>
+
+          <div>
             <input
               type="password"
               placeholder="พิมพ์ confirmPassword"
@@ -101,9 +101,11 @@ export default function Register() {
               value={input.confirmPassword}
             />
           </div>
+
           <button
             type="submit"
             className="btn btn-outline text-blue-400 w-32 bg-white"
+            onClick={hdlSubmit}
 
             // name="password"
             // value={input.submit}
@@ -111,7 +113,7 @@ export default function Register() {
             Submit
           </button>
         </form>
-      </main>
+      </div>
     </>
   );
 }

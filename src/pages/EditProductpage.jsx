@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { getProductById, updateProduct } from "../api/authApi";
 import { useNavigate, useParams } from "react-router-dom";
-
 export default function EditProductpage() {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -22,16 +21,18 @@ export default function EditProductpage() {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-  const hdlSubmit = (e) => {
+  const hdlSubmit = async (e) => {
     e.preventDefault();
+    console.log("FN");
     // // validation
-    updateProduct(id, input)
-      // .then(updateChordlist(id, inputChordlist))
-      .then((rs) => {
-        console.log(rs);
-        navigate("/allproduct");
-      });
+    try {
+      const rs = await updateProduct(id, input);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
+
   return (
     <>
       <h2 className="flex justify-center mt-10">แก้ไขสินค้า</h2>

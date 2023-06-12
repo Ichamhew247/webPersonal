@@ -1,7 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/logo.png";
-import { SearchIcon } from "../icons";
+import LoginPage from "./LoginPage";
+import { useAuth } from "../contexts/AuthContext";
+// import { SearchIcon } from "../icons";
 export default function Header() {
+  const navigate = useNavigate();
+  const { user, logout } = useAuth();
+
+  const hdlLogout = () => {
+    logout();
+    navigate("/");
+  };
   return (
     <>
       <div className="flex  items-end justify-center gap-28 bg-white">
@@ -21,6 +30,8 @@ export default function Header() {
           <Link to="/allproduct">สินค้า</Link>
           <Link to="/contact">ติดต่อเรา</Link>{" "}
         </div>
+        {/* <div></div> */}
+
         <div className="flex justify-end flex-1 bg-slate-600">
           <div className="dropdown dropdown-end ">
             <label
@@ -33,25 +44,34 @@ export default function Header() {
               tabIndex={0}
               className="text-blue-900 font-bold text-lg mr-20 dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <li>
-                <Link to="/login">
-                  <span>เข้าสู่ระบบ</span>
-                </Link>
-              </li>
-              <li>
-                <a>ประวัติการซื้อขาย</a>
-              </li>
-              <li>
-                <a>พิมพ์ใบกำกับภาษี</a>
-              </li>
-              <li>
-                <Link to="/creatproductpage">
-                  <a>เพิ่มสินค้า</a>
-                </Link>
-              </li>
-              <li>
-                <a>ออกจากระบบ</a>
-              </li>
+              {user ? (
+                <>
+                  <li>
+                    <a>ประวัติการซื้อขาย</a>
+                  </li>
+                  <li>
+                    <a>พิมพ์ใบกำกับภาษี</a>
+                  </li>
+                  <li>
+                    <Link to="/creatproductpage">
+                      <span>เพิ่มสินค้า</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <a className="cursor-pointer" onClick={hdlLogout}>
+                      ออกจากระบบ
+                    </a>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Link to="/login">
+                      <span>เข้าสู่ระบบ</span>
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>
@@ -72,7 +92,7 @@ export default function Header() {
         <div className="dropdown dropdown-end bg-amber-500">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
-              <SearchIcon className="fill-red-700 " />
+              {/* <SearchIcon className="fill-red-700 " /> */}
             </div>
           </label>
         </div>

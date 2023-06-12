@@ -3,12 +3,13 @@ import React from "react";
 import { useState } from "react";
 import { login, getMe } from "../api/authApi";
 import { useAuth } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
-  // const { user, setUser } = useAuth();
+  const { user, setUser } = useAuth();
 
   const [input, setInput] = useState({
-    userName: "",
+    username: "",
     password: "",
   });
   const hdlChangeInput = (e) => {
@@ -51,8 +52,8 @@ export default function LoginPage() {
                 placeholder="พิมพ์ชื่อผู้ใช้งาน"
                 className="input input-bordered w-full max-w-xs"
                 onChange={hdlChangeInput}
-                name="userName"
-                value={input.userName}
+                name="username"
+                value={input.username}
               />
             </div>
             <div>

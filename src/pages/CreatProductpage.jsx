@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { createProduct } from "../api/authApi";
-
+import { useNavigate } from "react-router-dom";
 export default function CreateProduct() {
+  const navigate = useNavigate();
   const [input, setInput] = useState({
     name: "",
     priceProduct: "",
@@ -11,11 +12,27 @@ export default function CreateProduct() {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-  const hdlSubmit = (e) => {
+  const hdlSubmit = async (e) => {
     e.preventDefault();
-
-    createProduct(input);
+    try {
+      const rs = await createProduct(input);
+      console.log(rs);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  // const hdlSubmit = (e) => {
+  //   e.preventDefault();
+  //   createProduct(input)
+  //     .then((rs) => {
+  //       console.log(rs),
+  //       navigate("/");
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
+
   return (
     <>
       <div className="flex justify-center">
@@ -60,7 +77,7 @@ export default function CreateProduct() {
               />
             </div>
             <div className="flex  justify-center gap-9 ">
-              <button className="btn" typeof="submit">
+              <button className="btn" type="submit">
                 Save
               </button>
             </div>

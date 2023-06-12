@@ -6,7 +6,7 @@ const AuthContext = createContext();
 
 export default function AuthContextProvider(props) {
   const [user, setUser] = useState(null);
-
+  console.log(props.children);
   useEffect(() => {
     let token = localStorage.getItem("token");
     if (!token) return;
@@ -16,7 +16,7 @@ export default function AuthContextProvider(props) {
   }, []);
 
   const logout = () => {
-    localStorage.removeItem("Item");
+    localStorage.removeItem("token");
     setUser(null);
   };
 

@@ -23,7 +23,8 @@ export const getMe = (token) => {
 };
 
 export const createProduct = (input) => {
-  return authApi.post("/products/", input);
+  console.log(input);
+  return authApi.post("/products/createProduct", input);
 };
 export const getProduct = () => {
   return authApi.get("/products/");
@@ -35,6 +36,6 @@ export const getProductById = (id) => {
 export const updateProduct = (id, input) => {
   return authApi.patch(`/products/${id}`, input);
 };
-// export const deleteProductById = (productId) => {
-//   return authApi.delete(`/products/${id}`);
-// };
+export const deleteProductById = (id) => {
+  return authApi.delete(`/products/${id}`);
+};
