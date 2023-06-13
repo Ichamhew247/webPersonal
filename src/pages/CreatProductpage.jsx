@@ -16,8 +16,8 @@ export default function CreateProduct() {
     e.preventDefault();
     try {
       const rs = await createProduct(input);
-      console.log(rs);
-      navigate("/");
+      console.log("12334r");
+      navigate("/allproduct");
     } catch (error) {
       console.log(error);
     }

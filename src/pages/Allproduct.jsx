@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getProduct, deleteProductById } from "../api/authApi";
-import { TagPrice } from "../icons";
+import { ImBin2 } from "react-icons/im";
+import { BiEdit } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
 export default function Allproduct() {
@@ -23,34 +24,29 @@ export default function Allproduct() {
 
   return (
     <>
-      <h2 className="flex justify-center p-11">สินค้าทั้งหมด</h2>
-      <div className="Allproduct flex flex-wrap">
+      <h2 className="flex justify-center p-14 text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-900">
+        สินค้าทั้งหมด
+      </h2>
+      <div className="Allproduct flex flex-wrap bg-slate-500">
         {product.map((product, index) => (
-          <div
-            className="AllproductId bg-yellow-200 m-4 w-56 h-60 rounded-md"
-            key={index}
-          >
-            <h2>ชื่อสินค้า : {product.name}</h2>
-
-            <div className="flex items-center">
-              <TagPrice className="fill-zinc-500 w-9" />{" "}
-              <h2>{product.priceProduct}</h2>
+          <div className=" w-[250px] h-[300px] rounded-md p-1 ">
+            <div className="bg-white w-[100%] h-[80%] p-3 border-sky-500 ">
+              <div className="h-[70%] flex justify-center items-center">
+                photo
+              </div>
+              <p className="font-semibold">ชื่อสินค้า : {product.name}</p>
+              <p className="font-semibold">ราคา {product.priceProduct}</p>
+              <p className="font-semibold">รายละเอียด {product.description}</p>
             </div>
-
-            <h2 className="overflow-auto h-40">{product.description}</h2>
-            <div className="flex justify-end gap-1 bg-slate-500">
-              <Link
-                className="btn btn-circle"
-                to={`/editproductpage/${product.id}`}
-              >
-                Edit
-              </Link>
-              <h1>{product.id}</h1>
-              {product.length !== 1 && (
-                <button onClick={() => hdlRemove(index, product.id)}>
-                  Remove
-                </button>
-              )}
+            <div className="bg-white h-[20%] flex justify-end pr-3 gap-2">
+              <button onClick={() => hdlRemove(index, product.id)}>
+                <ImBin2 />
+              </button>
+              <button>
+                <Link to={`/editproductpage/${product.id}`}>
+                  <BiEdit />
+                </Link>
+              </button>
             </div>
           </div>
         ))}

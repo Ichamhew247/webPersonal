@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/logo.png";
 import LoginPage from "./LoginPage";
 import { useAuth } from "../contexts/AuthContext";
+import { AiOutlineSearch } from "react-icons/ai";
 // import { SearchIcon } from "../icons";
 export default function Header() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ export default function Header() {
   };
   return (
     <>
-      <div className="flex  items-end justify-center gap-28 bg-white">
+      <div className="flex items-end justify-center mt gap-28 bg-white shadow-2xl">
         <div className="flex-col pb-14  ">
           <h1 className=" text-7xl text-blue-700 pb-4 font-semibold">
             Modernrubber and Supply
@@ -79,22 +80,17 @@ export default function Header() {
 
       {/* ค้นหาสินค้าที่ต้องการ */}
       <div className="bg-slate-500 flex justify-end ">
-        <div className=" gap-2">
-          <div className="form-control">
+        <div className="bg-lime-200 w-[20%] flex ">
+          <div>
             <input
               type="text"
               placeholder="ค้นหาสินค้าที่ต้องการ"
-              className="input input-bordered w-24 h-10 md:w-auto"
+              className="input input-bordered  h-10 md:w-auto"
             />
           </div>
-        </div>
-
-        <div className="dropdown dropdown-end bg-amber-500">
-          <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
-              {/* <SearchIcon className="fill-red-700 " /> */}
-            </div>
-          </label>
+          <button>
+            <AiOutlineSearch size="2.5rem " className="text-white " />
+          </button>
         </div>
       </div>
     </>

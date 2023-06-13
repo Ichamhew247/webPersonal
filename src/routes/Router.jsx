@@ -5,7 +5,7 @@ import Register from "../pages/Register";
 import LoginPage from "../pages/LoginPage";
 import Allproduct from "../pages/Allproduct";
 import Contact from "../pages/Contactpage";
-import CreatProductpage from "../pages/CreatProductpage";
+import CreatProduct from "../pages/CreatProductpage";
 import EditProductpage from "../pages/EditProductpage";
 // import GuestHome from "../pages/Guesthome";
 
@@ -24,7 +24,7 @@ export default function Router() {
         { path: "/allproduct", element: <Allproduct /> },
         { path: "/register", element: <Register /> },
         { path: "/login", element: <LoginPage /> },
-        { path: "/creatproductpage", element: <CreatProductpage /> },
+        { path: "/creatproductpage", element: <CreatProduct /> },
         { path: "/editproductpage/:id", element: <EditProductpage /> },
         // { path: "/guesthome", element: <GuestHome /> },
 

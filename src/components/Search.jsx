@@ -1,24 +1,20 @@
-import { SearchIcon } from "../icons";
+import { BsSearchHeartFill } from "react-icons/bs";
+
 export default function Search({ title }) {
   return (
     <>
       <div className="bg-slate-500 flex justify-end ">
+        <BsSearchHeartFill />
         <div className=" gap-2">
-          <div className="form-control">
-            <input
-              type="text"
-              placeholder="ค้นหาสินค้าที่ต้องการ"
-              className="input input-bordered w-24 h-10 md:w-auto"
-            />
-          </div>
+          <input
+            type="text"
+            placeholder="ค้นหาสินค้าที่ต้องการxsdsdsd"
+            className="input input-bordered w-96 h-10 md:w-auto"
+          />
         </div>
 
-        <div className="dropdown dropdown-end bg-amber-500">
-          <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
-              <SearchIcon className="fill-red-700 " />
-            </div>
-          </label>
+        <div>
+          <BsSearchHeartFill />
         </div>
       </div>
     </>

@@ -24,7 +24,7 @@ export const getMe = (token) => {
 
 export const createProduct = (input) => {
   console.log(input);
-  return authApi.post("/products/createProduct", input);
+  return authApi.post("/products/createProduct ", input);
 };
 export const getProduct = () => {
   return authApi.get("/products/");
