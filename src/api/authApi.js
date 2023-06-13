@@ -39,3 +39,6 @@ export const updateProduct = (id, input) => {
 export const deleteProductById = (id) => {
   return authApi.delete(`/products/${id}`);
 };
+export const searchProduct = (input) => {
+  return authApi.post("/products/search", input);
+};

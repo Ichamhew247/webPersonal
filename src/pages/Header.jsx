@@ -3,7 +3,7 @@ import Logo from "../assets/logo.png";
 import LoginPage from "./LoginPage";
 import { useAuth } from "../contexts/AuthContext";
 import { AiOutlineSearch } from "react-icons/ai";
-// import { SearchIcon } from "../icons";
+import { AiOutlineMenuFold } from "react-icons/ai";
 export default function Header() {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
@@ -25,72 +25,71 @@ export default function Header() {
         </div>
         <img className=" w-64 h-64 " src={Logo} />
       </div>
-      <div className=" flex text-white font-semibold bg-amber-300">
-        <div className="flex justify-between mx-16 gap-5  bg-yellow-700 w-72 text-lg">
+      <div className=" flex justify-between font-semibold bg-[#4971F7] ">
+        <div className="flex justify-between items-center mx-16 gap-5 text-white w-72 text-lg">
           <Link to="/">หน้าแรก</Link>
           <Link to="/allproduct">สินค้า</Link>
           <Link to="/contact">ติดต่อเรา</Link>{" "}
         </div>
-        {/* <div></div> */}
 
-        <div className="flex justify-end flex-1 bg-slate-600">
-          <div className="dropdown dropdown-end ">
-            <label
-              tabIndex={0}
-              className="btn m-1 text-blue-900 font-bold text-lg mr-20"
-            >
-              MENU
-            </label>
-            <ul
-              tabIndex={0}
-              className="text-blue-900 font-bold text-lg mr-20 dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              {user ? (
-                <>
-                  <li>
-                    <a>ประวัติการซื้อขาย</a>
-                  </li>
-                  <li>
-                    <a>พิมพ์ใบกำกับภาษี</a>
-                  </li>
-                  <li>
-                    <Link to="/creatproductpage">
-                      <span>เพิ่มสินค้า</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <a className="cursor-pointer" onClick={hdlLogout}>
-                      ออกจากระบบ
-                    </a>
-                  </li>
-                </>
-              ) : (
-                <>
-                  <li>
-                    <Link to="/login">
-                      <span>เข้าสู่ระบบ</span>
-                    </Link>
-                  </li>
-                </>
-              )}
-            </ul>
+        <div className="flex w-96 gap-6">
+          <div className="w-64 flex items-center gap-3">
+            {/* <div>
+              <input
+                type="text"
+                placeholder="ค้นหาสินค้าที่ต้องการ"
+                className="input input-bordered h-8 w-[230px] "
+              />
+            </div>
+            <div>
+              <AiOutlineSearch
+                size="1.5rem "
+                type="button"
+                className="text-white cursor-pointer text-3xl "
+              />
+            </div> */}
+            <div className="dropdown dropdown-end ">
+              <button tabIndex={0}>
+                <AiOutlineMenuFold
+                  type="button"
+                  className=" text-white cursor-pointer text-3xl"
+                />
+              </button>
+              <ul
+                tabIndex={0}
+                className="text-blue-900 font-bold text-lg mr-20 dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                {user ? (
+                  <>
+                    <li>
+                      <a>ประวัติการซื้อขาย</a>
+                    </li>
+                    <li>
+                      <a>พิมพ์ใบกำกับภาษี</a>
+                    </li>
+                    <li>
+                      <Link to="/creatproductpage">
+                        <span>เพิ่มสินค้า</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <a className="cursor-pointer" onClick={hdlLogout}>
+                        ออกจากระบบ
+                      </a>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li>
+                      <Link to="/login">
+                        <span>เข้าสู่ระบบ</span>
+                      </Link>
+                    </li>
+                  </>
+                )}
+              </ul>
+            </div>
           </div>
-        </div>
-      </div>
-
-      {/* ค้นหาสินค้าที่ต้องการ */}
-      <div className="bg-slate-500 flex justify-end ">
-        <div className="bg-lime-200 w-[20%] flex ">
-          <div>
-            <input
-              type="text"
-              placeholder="ค้นหาสินค้าที่ต้องการ"
-              className="input input-bordered  h-10 md:w-auto"
-            />
-          </div>
-          <button>
-            <AiOutlineSearch size="2.5rem " className="text-white " />
-          </button>
         </div>
       </div>
     </>
