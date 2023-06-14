@@ -11,7 +11,10 @@ const addToken = (token) => ({
 });
 
 export const register = (input) => {
-  return authApi.post("/users/register", input);
+  const note = authApi.post("/users/register", input);
+  console.log(note);
+  return note;
+  // return authApi.post("/users/register", input);
 };
 
 export const login = (input) => {
@@ -23,7 +26,6 @@ export const getMe = (token) => {
 };
 
 export const createProduct = (input) => {
-  console.log(input);
   return authApi.post("/products/createProduct ", input);
 };
 export const getProduct = () => {

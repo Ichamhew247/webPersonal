@@ -1,36 +1,80 @@
-// import React from "react";
+// import React, { useState, useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
+// import { UsePostContext } from "../../../hook/UsePostContext";
+// import { HiPlus } from "react-icons/hi2";
+// import { postApi } from "../../../service/modules/post-api";
 
-// import { ImBin2 } from "react-icons/im";
-// import { BiEdit } from "react-icons/bi";
+// function UploadPageContainer() {
+//   const [noPic, setNopic] = useState(true);
+//   const [file, setFile] = useState(null);
+//   const [fileUrl, setFileUrl] = useState("");
+//   const chooseFileFn = (e) => {
+//     if (e.target.files[0]) {
+//       setFileUrl(URL.createObjectURL(e.target.files[0]));
+//       setFile(e.target.files[0]);
+//       setNopic(false);
+//     }
+//   };
+//   const [postInput, setPost] = useState({ image: "", message: "" });
+//   const { postFn } = UsePostContext();
+//   const navigate = useNavigate();
+//   const handlePostInput = (e) =>
+//     setPost({ ...postInput, [e.target.name]: e.target.value });
 
-// export default function GuestHome() {
+//   const handleUpload = async (e) => {
+//     e.preventDefault();
+//     const formData = new FormData();
+//     if (postInput.message) {
+//       formData.append("message", postInput.message);
+//     }
+//     if (file) {
+//       console.log(file);
+//       formData.append("image", file);
+//     }
+//     const res = await postApi(formData);
+//     navigate("/gallery");
+//   };
+
 //   return (
-//     <>
-//       {product.map((product, index) => (
-//         <div className="bg-orange-300 w-[250px] h-[300px] rounded-md p-1 ">
-//           <div className="bg-red-400 w-[100%] h-[80%] p-3  ">
-//             <div className="h-[70%] flex justify-center items-center">
-//               photo
-//             </div>
-//             <p className="font-semibold">ชื่อสินค้า : {product.name}</p>
-//             <p className="font-semibold">ราคา {product.priceProduct}</p>
-//             <p className="font-semibold">รายละเอียด {product.description}</p>
-//           </div>
-//           <div className="bg-slate-500 h-[20%] flex justify-end pr-3 gap-2">
-//             <button onClick={() => hdlRemove(index, product.id)}>
-//               <ImBin2 />
-//             </button>
-//             <button>
-//               <Link
-//                 className="btn btn-circle"
-//                 to={`/editproductpage/${product.id}`}
-//               >
-//                 <BiEdit />
-//               </Link>
-//             </button>
-//           </div>
-//         </div>
-//       ))}
-//     </>
+//     <div className="flex flex-col items-center">
+//       <input
+//         id="uploadPic"
+//         type="file"
+//         placeholder="You can't touch this"
+//         className="hidden"
+//         onChange={(e) => chooseFileFn(e)}
+//       />
+
+//       <label
+//         htmlFor="uploadPic"
+//         className="relative h-[500px] aspect-[4/6] bg-slate-200 flex justify-center items-center"
+//       >
+//         <img
+//           className={`absolute w-full h-full object-cover ${
+//             noPic ? "hidden" : ""
+//           }`}
+//           src={fileUrl}
+//           alt="upload picture"
+//           onError={(e) => setNopic(true)}
+//         />
+//         <HiPlus className="w-14 h-14 " />
+//       </label>
+//       <textarea
+//         name="message"
+//         value={postInput.message}
+//         className="w-[40%] h-[100px] text-xl border border-slate-200 shadow-md my-4 p-4"
+//         onChange={handlePostInput}
+//       ></textarea>
+
+//       {/* <div className="flex gap-2">
+//         <button className="btn btn-outline">EDIT</button>
+//         <button className="btn  btn-outline">SAVE</button>
+//       </div> */}
+//       <button className="btn btn-outline" onClick={handleUpload}>
+//         UPLOAD
+//       </button>
+//     </div>
 //   );
 // }
+
+// export default UploadPageContainer;

@@ -1,41 +1,47 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import React from "react";
 import { useState } from "react";
 import { login, getMe } from "../api/authApi";
 import { useAuth } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function LoginPage() {
   const { user, setUser } = useAuth();
-
+  const navigate = useNavigate();
   const [input, setInput] = useState({
     username: "",
     password: "",
   });
+
   const hdlChangeInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
   const hdlSubmit = (e) => {
     e.preventDefault();
-    //validation
+    // validation
     console.log(input);
     login(input)
       .then((rs) => {
-        // console.log(rs.data.token);
+        console.log(rs.data.token);
         localStorage.setItem("token", rs.data.token);
         let token = localStorage.getItem("token");
         return getMe(token);
       })
       .then((rs) => {
-        console.log(rs.data);
+        toast.success("Login Success");
         setUser(rs.data);
+        navigate("/allproduct");
       })
       .catch((err) => {
         console.log(err);
-        alert(err.response.data.error || err.message);
+        // alert(err.response.data.message);
+        toast.error(err.response.data.message);
       });
   };
+
   return (
     <>
       <main className="p-6 m-auto max-w-[70%] ">
@@ -71,8 +77,14 @@ export default function LoginPage() {
               <span>Create New account</span>
             </Link>
 
-            <button
+            {/* <button
               type="submit"
+              className="btn btn-outline text-blue-400 w-32 bg-white"
+            >
+              Submit
+            </button> */}
+            <button
+              // onClick={notify}
               className="btn btn-outline text-blue-400 w-32 bg-white"
             >
               Submit

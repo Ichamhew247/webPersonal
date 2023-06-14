@@ -1,5 +1,5 @@
-import { useDropzone } from "react-dropzone";
-import { FcAddImage } from "react-icons/fc";
+// import { useDropzone } from "react-dropzone";
+// import { FcAddImage } from "react-icons/fc";
 import { useEffect, useState } from "react";
 import { getProductById, updateProduct } from "../api/authApi";
 import { useNavigate, useParams } from "react-router-dom";
@@ -37,11 +37,11 @@ export default function EditProductpage() {
     }
   };
 
-  const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
+  // const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
 
-  const files = acceptedFiles.map((file) => (
-    <li key={file.path}>{file.path}</li>
-  ));
+  // const files = acceptedFiles.map((file) => (
+  //   <li key={file.path}>{file.path}</li>
+  // ));
 
   return (
     <>
@@ -49,8 +49,8 @@ export default function EditProductpage() {
         แก้ไขสินค้า
       </h2>
       <div className="Allproduct flex flex-wrap justify-center">
-        <div className="w-[250px] h-auto gap-3 p-1 mb-3 shadow-lg bg-orange-200">
-          <div className="bg-white w-[100%] h-[100%] p-3 border-solid border-b-2 border-t-black">
+        <div className="w-[250px] h-auto gap-3 p-1 mb-3 shadow-lg ">
+          <div className="bg-white w-[100%] h-[100%] p-3 ">
             <form
               className="flex flex-col items-center gap-4 mt-4"
               onSubmit={hdlSubmit}

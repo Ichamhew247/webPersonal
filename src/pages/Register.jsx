@@ -1,8 +1,14 @@
 import React from "react";
 import { useState } from "react";
 import { register } from "../api/authApi";
+// import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+// import { useAuth } from "../contexts/AuthContext";
+// import "react-toastify/dist/ReactToastify.css";
 
 export default function Register() {
+  const navigate = useNavigate();
+  // const { user, setUser } = useAuth;
   const [input, setInput] = useState({
     username: "",
     firstName: "",
@@ -15,31 +21,53 @@ export default function Register() {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-  const hdlSubmit = (e) => {
-    const { username, firstName, lastName, password, confirmPassword } = input;
-    // e.preventDefault();
+  const hdlSubmit = async (e) => {
+    try {
+      const { username, firstName, lastName, password, confirmPassword } =
+        input;
+      e.preventDefault();
+      // // Validation
 
-    // Validation
-    if (password != confirmPassword)
-      return alert("Password not match, recheck");
+      if (password != confirmPassword)
+        return alert("Password not match, recheck");
 
-    register({
-      username,
-      firstName,
-      lastName,
-      password,
-    })
-      .then((rs) => {
-        console.log(rs);
-      })
-      .catch((err) => console.log(err));
+      // register({
+      //   username,
+      //   password,
+      //   firstName,
+      //   lastName,
+      //   password,
+      // })
+      //   .then((rs) => {
+      //     console.log(rs);
+      //     alert("Show");
+      //     // navigate("https://www.google.com");
+      //     // toast.success("Register Success");
+      //   })
+      //   .catch((err) => alert("err"));
+      await register({
+        username,
+        password,
+        firstName,
+        lastName,
+        password,
+      });
+
+      navigate("/");
+      toast.success("Register Success");
+    } catch {
+      alert("err");
+    }
   };
   return (
     <>
       <div className="p-6 m-auto max-w-[70%] ">
         <h1 className="text-green-600 text-6xl">Create New Account</h1>
 
-        <form className="bg-zinc-400 gap-6 flex flex-col p-6">
+        <form
+          className="bg-zinc-400 gap-6 flex flex-col p-6"
+          // onSubmit={() => hdlSubmit()}
+        >
           <h1 className="text-4xl">User</h1>
 
           <div>
@@ -103,9 +131,9 @@ export default function Register() {
           </div>
 
           <button
-            type="submit"
+            // type="submit"
             className="btn btn-outline text-blue-400 w-32 bg-white"
-            onClick={hdlSubmit}
+            onClick={(e) => hdlSubmit(e)}
 
             // name="password"
             // value={input.submit}

@@ -5,10 +5,12 @@ import { BiEdit } from "react-icons/bi";
 import { TbCurrencyBaht } from "react-icons/tb";
 import { AiOutlineSearch } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function Allproduct() {
   const [product, setProduct] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  const { user } = useAuth();
 
   useEffect(() => {
     const id = setTimeout(() => {
@@ -67,16 +69,26 @@ export default function Allproduct() {
               </div>
               <p className="font-semibold">รายละเอียด {product.description}</p>
             </div>
-            <div className="bg-white h-[10%] flex justify-end pr-3 gap-2 ">
-              <button onClick={() => hdlRemove(index, product.id)}>
-                <ImBin2 />
-              </button>
-              <button>
-                <Link to={`/editproductpage/${product.id}`}>
-                  <BiEdit />
-                </Link>
-              </button>
-            </div>
+
+            {user ? (
+              <>
+                {/* Edit remove */}
+                <div className="bg-red-500 h-[10%] flex justify-end pr-3 gap-2 ">
+                  <button onClick={() => hdlRemove(index, product.id)}>
+                    <ImBin2 />
+                  </button>
+                  <button>
+                    <Link to={`/editproductpage/${product.id}`}>
+                      <BiEdit />
+                    </Link>
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <div>ไม่ให้ดู</div>
+              </>
+            )}
           </div>
         ))}
       </div>
