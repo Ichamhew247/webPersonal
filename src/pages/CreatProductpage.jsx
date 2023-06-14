@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createProduct } from "../api/authApi";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 export default function CreateProduct() {
   const navigate = useNavigate();
   const [input, setInput] = useState({
@@ -16,10 +17,11 @@ export default function CreateProduct() {
     e.preventDefault();
     try {
       const rs = await createProduct(input);
-      console.log("12334r");
+      toast.success();
       navigate("/allproduct");
     } catch (error) {
       console.log(error);
+      toast.error(err.response.data.message);
     }
   };
 

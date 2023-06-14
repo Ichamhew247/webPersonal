@@ -37,7 +37,7 @@ export default function Allproduct() {
       <h2 className="flex justify-center p-14 text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-900">
         สินค้าทั้งหมด
       </h2>
-      <div className="flex justify-end items-center shadow-sm">
+      <div className="flex justify-end items-center shadow-sm mb-3">
         <div>
           <input
             type="text"
@@ -55,11 +55,11 @@ export default function Allproduct() {
           />
         </div>
       </div>
-      <div className="Allproduct flex flex-wrap justify-center ">
+      <div className="Allproduct flex flex-wrap justify-center gap-10">
         {product.map((product, index) => (
-          <div className=" w-[250px] h-[300px] gap-3 p-1  mb-3 shadow-lg  ">
+          <div className=" w-[250px] h-[300px]  p-1  mb-3 shadow-lg bg-slate-400 ">
             <div className="bg-white w-[100%] h-[90%] p-3 border-solid border-b-2 border-t-black  ">
-              <div className="h-[60%] flex justify-center items-center">
+              <div className="h-[60%] flex justify-center items-center bg-slate-200">
                 photo
               </div>
               <p className="font-semibold">ชื่อสินค้า : {product.name}</p>
@@ -73,7 +73,7 @@ export default function Allproduct() {
             {user ? (
               <>
                 {/* Edit remove */}
-                <div className="bg-red-500 h-[10%] flex justify-end pr-3 gap-2 ">
+                <div className=" bg-slate-400  h-[10%] flex justify-end pr-3 gap-2 ">
                   <button onClick={() => hdlRemove(index, product.id)}>
                     <ImBin2 />
                   </button>
@@ -95,3 +95,26 @@ export default function Allproduct() {
     </>
   );
 }
+
+// import React, { useState } from "react";
+// import Select from "react-select";
+
+// const options = [
+//   { value: "chocolate", label: "Chocolate" },
+//   { value: "strawberry", label: "Strawberry" },
+//   { value: "vanilla", label: "Vanilla" },
+// ];
+
+// export default function App() {
+//   const [selectedOption, setSelectedOption] = useState(null);
+
+//   return (
+//     <div className="App">
+//       <Select
+//         defaultValue={selectedOption}
+//         onChange={setSelectedOption}
+//         options={options}
+//       />
+//     </div>
+//   );
+// }

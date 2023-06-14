@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { register } from "../api/authApi";
-// import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 // import { useAuth } from "../contexts/AuthContext";
-// import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -28,6 +28,13 @@ export default function Register() {
       e.preventDefault();
       // // Validation
 
+      if (!password) {
+        return alert("ใส่ Password ด้วยจ้า");
+      }
+      if (!confirmPassword) {
+        return alert("ใส่ confirmPassword ด้วยจ้า");
+      }
+
       if (password != confirmPassword)
         return alert("Password not match, recheck");
 
@@ -50,15 +57,13 @@ export default function Register() {
         password,
         firstName,
         lastName,
-        password,
       });
 
       navigate("/");
       toast.success("Register Success");
-    } catch {
-      alert("err");
-    }
+    } catch (err) {}
   };
+
   return (
     <>
       <div className="p-6 m-auto max-w-[70%] ">

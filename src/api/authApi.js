@@ -11,9 +11,10 @@ const addToken = (token) => ({
 });
 
 export const register = (input) => {
-  const note = authApi.post("/users/register", input);
-  console.log(note);
-  return note;
+  return authApi.post("/users/register", input);
+  // const note = authApi.post("/users/register", input);
+  // console.log(note);
+  // return note;
   // return authApi.post("/users/register", input);
 };
 
