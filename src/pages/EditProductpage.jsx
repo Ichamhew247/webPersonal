@@ -17,7 +17,7 @@ export default function EditProductpage() {
   useEffect(() => {
     getProductById(id).then((rs) => {
       setInput(rs.data);
-      console.log(rs.data);
+      // console.log(rs.data);
     });
   }, [id]);
 
@@ -30,7 +30,7 @@ export default function EditProductpage() {
     console.log("FN");
     // // validation
     try {
-      const rs = await updateProduct(id, input);
+      await updateProduct(id, input);
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -55,24 +55,6 @@ export default function EditProductpage() {
               className="flex flex-col items-center gap-4 mt-4"
               onSubmit={hdlSubmit}
             >
-              {/* ทำภาพ */}
-              {/* <div className="flex w-36 h-[70%] justify-center items-center bg-red-600">
-                <form action="#">
-                  <div {...getRootProps()}>
-                    <input {...getInputProps()} accept="image/*" />
-
-                    <FcAddImage className="text-6xl" />
-                  </div>
-                  <ul>{files}</ul>
-                  <button
-                    type="submit"
-                    className="bg-white rounded-lg w-18 h-6 p-1 text-[9px]"
-                  >
-                    <p>Uploads</p>
-                  </button>
-                </form>
-              </div> */}
-              {/* ทำภาพ */}
               <div className="name">
                 <p>ชื่อสินค้า</p>
                 <input

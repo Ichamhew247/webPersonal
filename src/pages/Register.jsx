@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { useState } from "react";
 import { register } from "../api/authApi";
 import { useNavigate } from "react-router-dom";
@@ -38,20 +38,6 @@ export default function Register() {
       if (password != confirmPassword)
         return alert("Password not match, recheck");
 
-      // register({
-      //   username,
-      //   password,
-      //   firstName,
-      //   lastName,
-      //   password,
-      // })
-      //   .then((rs) => {
-      //     console.log(rs);
-      //     alert("Show");
-      //     // navigate("https://www.google.com");
-      //     // toast.success("Register Success");
-      //   })
-      //   .catch((err) => alert("err"));
       await register({
         username,
         password,
@@ -69,10 +55,7 @@ export default function Register() {
       <div className="p-6 m-auto max-w-[70%] ">
         <h1 className="text-green-600 text-6xl">Create New Account</h1>
 
-        <form
-          className="bg-zinc-400 gap-6 flex flex-col p-6"
-          // onSubmit={() => hdlSubmit()}
-        >
+        <form className="bg-zinc-400 gap-6 flex flex-col p-6">
           <h1 className="text-4xl">User</h1>
 
           <div>

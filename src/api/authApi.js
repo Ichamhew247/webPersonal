@@ -10,8 +10,19 @@ const addToken = (token) => ({
   },
 });
 
+// export const register = (input) => {
+//   return axios
+//     .create({
+//       baseURL: "http://localhost:8888",
+//     })
+//     .post("/users/register", input);
+//   // const note = authApi.post("/users/register", input);
+//   // console.log(note);
+//   // return note;
+//   // return authApi.post("/users/register", input);
+// };
 export const register = (input) => {
-  return authApi.post("/users/register", input);
+  return axios.post("http://localhost:8888/users/register", input);
   // const note = authApi.post("/users/register", input);
   // console.log(note);
   // return note;

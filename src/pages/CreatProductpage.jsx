@@ -9,9 +9,6 @@ export default function CreateProduct() {
     priceProduct: "",
     description: "",
   });
-  const hdlChangeInput = (e) => {
-    setInput({ ...input, [e.target.name]: e.target.value });
-  };
 
   const hdlSubmit = async (e) => {
     e.preventDefault();
@@ -23,6 +20,9 @@ export default function CreateProduct() {
       console.log(error);
       toast.error(err.response.data.message);
     }
+  };
+  const hdlChangeInput = (e) => {
+    setInput({ ...input, [e.target.name]: e.target.value });
   };
 
   return (

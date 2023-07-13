@@ -13,9 +13,9 @@ export default function Allproduct() {
   const { user } = useAuth();
 
   useEffect(() => {
-    const id = setTimeout(() => {
+    setTimeout(() => {
       searchProduct({ search: searchValue }).then((rs) => {
-        console.log(rs.data);
+        console.log(rs);
         setProduct(rs.data);
       });
     }, 1000);
@@ -49,21 +49,24 @@ export default function Allproduct() {
         </div>
         <div>
           <AiOutlineSearch
-            size="1.5rem "
+            size="1.5rem"
             type="button"
-            className="text-blue cursor-pointer text-3xl "
+            className="text-blue cursor-pointer text-3xl"
           />
         </div>
       </div>
       <div className="Allproduct flex flex-wrap justify-center gap-10">
         {product.map((product, index) => (
-          <div className=" w-[250px] h-[300px]  p-1  mb-3 shadow-lg bg-slate-400 ">
-            <div className="bg-white w-[100%] h-[90%] p-3 border-solid border-b-2 border-t-black  ">
+          <div
+            className="w-[250px] h-[300px] p-1 mb-3 shadow-lg bg-slate-400"
+            key={product.id}
+          >
+            <div className="bg-white w-[100%] h-[90%] p-3 border-solid border-b-2 border-t-black">
               <div className="h-[60%] flex justify-center items-center bg-slate-200">
                 photo
               </div>
-              <p className="font-semibold">ชื่อสินค้า : {product.name}</p>
-              <div className="flex items-center gap-2 ">
+              <p className="font-semibold">ชื่อสินค้า: {product.name}</p>
+              <div className="flex items-center gap-2">
                 {product.priceProduct}
                 <TbCurrencyBaht />
               </div>
@@ -73,7 +76,7 @@ export default function Allproduct() {
             {user ? (
               <>
                 {/* Edit remove */}
-                <div className=" bg-slate-400  h-[10%] flex justify-end pr-3 gap-2 ">
+                <div className="bg-slate-400 h-[10%] flex justify-end pr-3 gap-2">
                   <button onClick={() => hdlRemove(index, product.id)}>
                     <ImBin2 />
                   </button>
@@ -86,7 +89,7 @@ export default function Allproduct() {
               </>
             ) : (
               <>
-                <div>ไม่ให้ดู</div>
+                <div>-</div>
               </>
             )}
           </div>
@@ -95,26 +98,3 @@ export default function Allproduct() {
     </>
   );
 }
-
-// import React, { useState } from "react";
-// import Select from "react-select";
-
-// const options = [
-//   { value: "chocolate", label: "Chocolate" },
-//   { value: "strawberry", label: "Strawberry" },
-//   { value: "vanilla", label: "Vanilla" },
-// ];
-
-// export default function App() {
-//   const [selectedOption, setSelectedOption] = useState(null);
-
-//   return (
-//     <div className="App">
-//       <Select
-//         defaultValue={selectedOption}
-//         onChange={setSelectedOption}
-//         options={options}
-//       />
-//     </div>
-//   );
-// }
